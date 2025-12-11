@@ -1,19 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// REMOVED dotenv so it cannot mess up your password
-
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// ⚠️ CHECK YOUR USERNAME HERE. 
-// If Atlas says "amarthya", change "admin" to "amarthya" below.
 const MONGO_URI = "mongodb+srv://admin:Password123@cluster0.hjjxzoq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 console.log("---------------------------------------------------");
 console.log("Attempting to connect with URI:");
-// This will print the URL (hidden password) so you can see if it's correct
+
 console.log(MONGO_URI.replace(/:([^:@]{1,})@/, ':****@')); 
 console.log("---------------------------------------------------");
 
@@ -26,7 +22,6 @@ mongoose.connect(MONGO_URI)
         console.log("👉 CHECK: Is your IP allowed in 'Network Access'?");
     });
 
-// --- Schemas ---
 const tokenSchema = new mongoose.Schema({
     name: String,
     tokenNumber: Number,
@@ -52,7 +47,6 @@ const initQueue = async () => {
 };
 setTimeout(initQueue, 3000);
 
-// --- Routes ---
 app.post('/join', async (req, res) => {
     try {
         const state = await QueueState.findOne();
