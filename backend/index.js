@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const MONGO_URI = "mongodb+srv://admin:Password123@cluster0.hjjxzoq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URI = "mongodb+srv://admin:@cluster0.hjjxzoq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 console.log("---------------------------------------------------");
 console.log("Attempting to connect with URI:");
